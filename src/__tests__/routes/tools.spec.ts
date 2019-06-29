@@ -16,6 +16,7 @@ describe('Tools routes tests', (): void => {
     link: 'https://google.com',
     tags: ['special3'],
   };
+  const nonExistentID = '5d119f89dfb87df35d88b0d7';
 
   test('Test application get route', (done): void => {
     request(server)
@@ -59,6 +60,12 @@ describe('Tools routes tests', (): void => {
       });
   });
 
+  test('Test application should get/:id route with a non existent id', (): void => {
+    request(server)
+      .get(`/tools/${nonExistentID}`)
+      .expect(404);
+  });
+
   test('Test application get/ filtering from a tag', async (): Promise<
     void
   > => {
@@ -78,5 +85,11 @@ describe('Tools routes tests', (): void => {
         if (err) done(err);
         done();
       });
+  });
+
+  test('Test application delete with a non existent id', (): void => {
+    request(server)
+      .delete(`/tools/${nonExistentID}`)
+      .expect(404);
   });
 });

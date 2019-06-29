@@ -36,6 +36,7 @@ const toolSchema: Schema = new Schema({
       trim: true,
       minLength: 1,
       maxLength: 40,
+      lowercase: true,
     },
   ],
 });
