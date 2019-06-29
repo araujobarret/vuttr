@@ -22,6 +22,16 @@
       "get": {
         "tags": ["Tools"],
         "summary": "Gets tools",
+        "parameters": [
+          {
+            "name": "tag",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "required": false
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",
