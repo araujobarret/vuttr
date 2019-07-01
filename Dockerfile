@@ -22,5 +22,3 @@ WORKDIR /var/app
 COPY --from=deps /var/app/node_modules ./node_modules/
 COPY --from=build /var/app/build ./build/
 COPY package.json .
-
-RUN ls -la
