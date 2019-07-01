@@ -1,16 +1,26 @@
-FROM node:10.16.0-alpine
-
+FROM node:10.16.0-alpine AS build
 WORKDIR /var/app
 
-COPY package.json .
+COPY package.json yarn.lock ./
 RUN yarn install 
 
-COPY . .
+COPY tsconfig.json ./
+COPY tsconfig.release.json ./
+COPY src/ ./src
 
-# Yarn build will need devDependencies for the transpile task of TS
 RUN yarn build
-RUN rm -rf node_modules/*
 
+FROM node:10.16.0-alpine AS deps
+WORKDIR /var/app
+
+COPY package.json yarn.lock ./
 RUN yarn install --production=true
+
+FROM node:10.16.0-alpine
+WORKDIR /var/app
+
+COPY --from=deps /var/app/node_modules ./node_modules/
+COPY --from=build /var/app/build ./build/
+COPY package.json .
 
 RUN ls -la
