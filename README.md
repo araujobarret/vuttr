@@ -18,8 +18,8 @@
 
 As seguintes variáveis definidas no arquivo **.env** na raiz deste repositório são necessárias para a aplicação:
 
-- DB_URI: url de conexão com o MongoDB, exemplo: _mongodb://user:password@ds.mlab.com:51463/database_
-- TEST_DB_URI: url de conexão com o MongoDB para os **testes**, exemplo: _mongodb://user:password@ds.mlab.com:51463/database_test_
+- DB*URI: url de conexão com o MongoDB, exemplo: \_mongodb://user:password@ds.mlab.com:51463/database*
+- TEST*DB_URI: url de conexão com o MongoDB para os **testes**, exemplo: \_mongodb://user:password@ds.mlab.com:51463/database_test*
 - NODE_ENV: environment cujo Node irá executar, pode ter os valores `development`, `production` e `test`;
 
 Exemplo de _.env_:

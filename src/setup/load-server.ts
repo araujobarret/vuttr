@@ -1,7 +1,5 @@
 import express from 'express';
-import { NODE_ENV } from '../config/env';
-
-const PORT = 3000;
+import { NODE_ENV, PORT } from '../config/env';
 
 export default function(server: express.Application): void {
   if (process.env.NODE_ENV !== 'test') {
